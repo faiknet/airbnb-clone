@@ -15,12 +15,12 @@ function Search({ searchResults }) {
 
   return (
     <div>
-      <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
+      <Header placeholder={`${location} | ${range} | ${noOfGuests} guest(s)`} />
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6 border-b">
           <p className="text-xs">
-            300+ Stays for {range} for {noOfGuests} Guests
+            300+ Stays for {range} for {noOfGuests} Guest(s)
           </p>
 
           <h1 className="text-3xl font-semibold mt-2 mb-6">

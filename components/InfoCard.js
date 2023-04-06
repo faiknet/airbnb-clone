@@ -1,19 +1,43 @@
 import Image from "next/image"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { HeartIcon } from "@heroicons/react/24/outline"
 import { StarIcon } from "@heroicons/react/24/solid"
 
 function InfoCard({ img, location, title, description, star, price, total }) {
+  const [heartClicked, setHeartClicked] = useState(() => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("heartClicked") || "fill-gray-400 opacity-80"
+    } else {
+      return "fill-gray-400 opacity-80 cursor-pointer"
+    }
+  })
+
+  const handleClick = () => {
+    if (heartClicked === "fill-gray-300") {
+      setHeartClicked("fill-red-500")
+    } else {
+      setHeartClicked("fill-gray-300")
+    }
+  }
+
+  useEffect(() => {
+    // Store the value of heartClass in local storage
+    localStorage.setItem("heartClicked", heartClicked)
+  }, [heartClicked])
+
   return (
     <div className="flex py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">
-      <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
+      <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0 hover:opacity-80">
         <Image src={img} fill objectFit="cover" className="rounded-2xl" />
       </div>
 
       <div className="flex flex-col flex-grow pl-5">
         <div className="flex justify-between">
           <p>{location}</p>
-          <HeartIcon className="h-7 cursor-pointer" />
+          <HeartIcon
+            className={`h-7 ${heartClicked} cursor-pointer active:scale-90`}
+            onClick={handleClick}
+          />
         </div>
 
         <h4 className="text-xl">{title}</h4>
