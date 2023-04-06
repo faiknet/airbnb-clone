@@ -6,9 +6,9 @@ import { StarIcon } from "@heroicons/react/24/solid"
 function InfoCard({ img, location, title, description, star, price, total }) {
   const [heartClicked, setHeartClicked] = useState(() => {
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("heartClicked") || "fill-gray-400 opacity-80"
+      return localStorage.getItem("heartClicked") || "fill-gray-300 opacity-80"
     } else {
-      return "fill-gray-400 opacity-80 cursor-pointer"
+      return "fill-gray-300 opacity-80 cursor-pointer"
     }
   })
 
