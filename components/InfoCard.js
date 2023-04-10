@@ -3,27 +3,41 @@ import React, { useEffect, useState } from "react"
 import { HeartIcon } from "@heroicons/react/24/outline"
 import { StarIcon } from "@heroicons/react/24/solid"
 
-function InfoCard({ img, location, title, description, star, price, total }) {
+function InfoCard({
+  index,
+  img,
+  location,
+  title,
+  description,
+  star,
+  price,
+  total,
+}) {
   const [heartClicked, setHeartClicked] = useState(() => {
+    const key = `heartClicked-${index}`
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("heartClicked") || "fill-gray-300 opacity-80"
+      return localStorage.getItem(key) || "fill-gray-300 opacity-80"
     } else {
       return "fill-gray-300 opacity-80 cursor-pointer"
     }
   })
 
   const handleClick = () => {
+    const key = `heartClicked-${index}`
     if (heartClicked === "fill-gray-300") {
       setHeartClicked("fill-red-500")
+      localStorage.setItem(key, "fill-red-500")
     } else {
       setHeartClicked("fill-gray-300")
+      localStorage.setItem(key, "fill-gray-300")
     }
   }
 
   useEffect(() => {
     // Store the value of heartClass in local storage
-    localStorage.setItem("heartClicked", heartClicked)
-  }, [heartClicked])
+    const key = `heartClicked-${index}`
+    localStorage.setItem(key, heartClicked)
+  }, [heartClicked, index])
 
   return (
     <div className="flex py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">

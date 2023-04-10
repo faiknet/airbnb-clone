@@ -12,10 +12,19 @@ function Search({ searchResults }) {
   const formattedStartDate = format(new Date(startDate), "MMM dd")
   const formattedEndDate = format(new Date(endDate), "MMM dd")
   const range = `${formattedStartDate} - ${formattedEndDate}`
+  //get a numerical value of the date rage for total cost calculation
+  const start = new Date(startDate)
+  const end = new Date(endDate)
+  const timeDiff = end.getTime() - start.getTime()
+  const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
 
   return (
     <div>
-      <Header placeholder={`${location} | ${range} | ${noOfGuests} guest(s)`} />
+      <div className="hidden lg:block">
+        <Header
+          placeholder={`${location} | ${range} | ${noOfGuests} guest(s)`}
+        />
+      </div>
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6 border-b">
@@ -45,8 +54,8 @@ function Search({ searchResults }) {
                   title={title}
                   description={description}
                   star={star}
-                  price={price}
-                  total={total}
+                  price={`$${price} / night`}
+                  total={`$${price * numDays} total`}
                 />
               )
             )}

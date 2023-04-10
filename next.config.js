@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["links.papareact.com", "jsonkeeper.com"],
+    domains: ["links.papareact.com", "imgur.com"],
   },
   env: {
     access_key:

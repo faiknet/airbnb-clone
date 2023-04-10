@@ -55,7 +55,7 @@ function Header({ placeholder }) {
         className="relative flex items-center h-10 cursor-pointer"
       >
         <Image
-          src="https://links.papareact.com/qd3"
+          src="/airbnb-logo-long.png"
           fill
           objectFit="contain"
           objectPosition="left"
@@ -65,20 +65,23 @@ function Header({ placeholder }) {
       <div className="flex md:border-2 rounded-full py-2 md:shadow-sm md:hover:shadow-md transition duration-150">
         <input
           type="text"
-          placeholder={placeholder || "Start your search"}
-          className="pl-5 bg-transparent outline-none flex-grow text-gray-600 placeholder-gray-400 placeholder:text-center"
+          placeholder={placeholder || "Anywhere"}
+          className="pl-5 bg-transparent outline-none flex-grow text-gray-600 placeholder-gray-400 sm:placeholder:text-center"
           value={searchInput}
           onClick={(e) => setSearchInput(" ")}
           onChange={(e) => setSearchInput(e.target.value)}
         ></input>
-        <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer stroke-white mx-2" />
+        <MagnifyingGlassIcon
+          onClick={search}
+          className="hidden lg:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer stroke-white mx-2"
+        />
       </div>
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-900 cursor-pointer">
-        <p className="font-semibold hidden md:inline-flex hover:bg-gray-100 rounded-3xl p-3">
+        <p className="hidden lg:inline-flex font-semibold hover:bg-gray-100 rounded-3xl p-3">
           Airbnb your home
         </p>
-        <GlobeAltIcon className="h-6 box-content hover:bg-gray-100 p-3 rounded-3xl" />
+        <GlobeAltIcon className="hidden lg:inline-flex h-6 box-content hover:bg-gray-100 p-3 rounded-3xl" />
 
         <div className="flex space-x-2 border-2 p-2 rounded-full items-center hover:shadow-md transition duration-150">
           <Bars3Icon className="h-6 stroke-gray-500" />

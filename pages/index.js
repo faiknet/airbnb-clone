@@ -10,9 +10,9 @@ export default function Home({ exploreData, cardsData }) {
   return (
     <div className="">
       <Head>
-        <title>Airbnb [C]</title>
+        <title>Airbnb</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <Header />
@@ -45,7 +45,7 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <LargeCard
-          img="https://links.papareact.com/4cj"
+          img="/Wishlist.png"
           title="The Greatest Outdoors"
           description="Wishlists curated by Aribnb."
           buttonText="Get Inspired"
