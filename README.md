@@ -13,8 +13,11 @@ The goal of this website project that matches the look and feel of the original 
   * Styling was done using Tailwind CSS
 * The ability to view the search results and have the results remember the user's input throughout the website
   * Additionally, an interactive map is provided here with use of MapBox
+* The ability to use server side rendering within Next JS to render information
   
 ## Lessons and Takeaways
 This project gave me my first opportunity to work in depth with Next JS on a complex project. I came into many snags on the way to the final result, such as making the dropdown date range picker be completely responsive, and figuring out how to manipulate data across pages. Ultimately, these issues were resolved and the use of React made it a very enjoyable process. 
+
+Additionally, this project allowed me to really be able to learn about and practice with server side rendering offered within the Next JS framework. This initially took some time to figure out, and many times my JSON file did not agree with me, but the experience was invaluable, in my opinion.
 
 This is a project I will continue to build upon as I see it as a project with high learning potential but if I were to do it differently from day one, I would put an emphasis on working with a "filters" feature rather than the amount of time it took me to figure out maps. In the future, that is a feature I will be working on, as well as improving the navbar for functionality.
