@@ -1,38 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Airbnb Clone Site
+Airbnb is a website that I consider fairly impressive from a web developer view, and it is also a website that has changed it's entire look and functionality multiple times over the years. This project aims to take the website that Airbnb created and create a clone of it from scratch using Next JS and Tailwind CSS.
 
-## Getting Started
+![Desktop view of the site](https://user-images.githubusercontent.com/115377457/236116382-a794dfb4-b390-436f-aa47-d3440cab8c28.png)
 
-First, run the development server:
+## Features
+The goal of this website project that matches the look and feel of the original Airbnb website, as such, the following features were important to achieve this: 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+* Be completely mobile and desktop responsive in a way that meets current standards and provides an appealing user experience.
+* The ability to have an interactive search bar for the user to enter their dates, location, and number of guests.
+  * This was achieved by using Next JS routing and react-date-range
+* To be presentable as a professional website that Airbnb would be satisfied
+  * Styling was done using Tailwind CSS
+* The ability to view the search results and have the results remember the user's input throughout the website
+  * Additionally, an interactive map is provided here with use of MapBox
+  
+## Lessons and Takeaways
+This project gave me my first opportunity to work in depth with Next JS on a complex project. I came into many snags on the way to the final result, such as making the dropdown date range picker be completely responsive, and figuring out how to manipulate data across pages. Ultimately, these issues were resolved and the use of React made it a very enjoyable process. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is a project I will continue to build upon as I see it as a project with high learning potential but if I were to do it differently from day one, I would put an emphasis on working with a "filters" feature rather than the amount of time it took me to figure out maps. In the future, that is a feature I will be working on, as well as improving the navbar for functionality.
