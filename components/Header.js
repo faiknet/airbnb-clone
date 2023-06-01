@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import Image from "next/image"
 import {
   MagnifyingGlassIcon,
@@ -17,13 +17,18 @@ function Header({ placeholder }) {
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [numberOfGuests, setNumberOfGuests] = useState(1)
+  const [toggleMenu, setToggleMenu] = useState(false)
+  const menuDropDown = useRef(null)
+  const searchDropDown = useRef("")
   const router = useRouter()
 
   const search = () => {
+    const location = searchInput !== " " ? searchInput : "Anywhere"
+
     router.push({
       pathname: "/search",
       query: {
-        location: searchInput,
+        location: location,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
         noOfGuests: numberOfGuests,
@@ -47,8 +52,28 @@ function Header({ placeholder }) {
     key: "selection",
   }
 
+  const closeOpenMenu = (e) => {
+    if (
+      menuDropDown.current &&
+      toggleMenu &&
+      !menuDropDown.current.contains(e.target)
+    ) {
+      setToggleMenu(false)
+    }
+    if (
+      searchDropDown.current &&
+      searchInput != "" &&
+      !searchDropDown.current.contains(e.target)
+    ) {
+      resetInput()
+    }
+  }
+
+  typeof window !== "undefined" &&
+    document.addEventListener("mousedown", closeOpenMenu)
+
   return (
-    <header className="sticky top-0 z-10 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
+    <header className="sticky top-0 z-10 grid  grid-cols-3 bg-white shadow-md p-5 md:px-10">
       {/* Left */}
       <div
         onClick={() => router.push("/")}
@@ -77,20 +102,59 @@ function Header({ placeholder }) {
         />
       </div>
       {/* Right */}
-      <div className="flex items-center space-x-4 justify-end text-gray-900 cursor-pointer">
-        <p className="hidden lg:inline-flex font-semibold hover:bg-gray-100 rounded-3xl p-3">
+      <div className="flex items-center space-x-4 justify-end text-gray-900">
+        <p className="hidden lg:inline-flex font-semibold hover:bg-gray-100 rounded-3xl p-3 cursor-pointer">
           Airbnb your home
         </p>
-        <GlobeAltIcon className="hidden lg:inline-flex h-6 box-content hover:bg-gray-100 p-3 rounded-3xl" />
+        <GlobeAltIcon className="hidden lg:inline-flex h-6 box-content hover:bg-gray-100 p-3 rounded-3xl cursor-pointer" />
 
-        <div className="flex space-x-2 border-2 p-2 rounded-full items-center hover:shadow-md transition duration-150">
-          <Bars3Icon className="h-6 stroke-gray-500" />
-          <UserCircleIcon className="h-8" />
-        </div>
+        {toggleMenu ? (
+          <div
+            className="flex space-x-2 border-2 p-2 rounded-full items-center hover:shadow-md transition duration-150 cursor-pointer"
+            ref={menuDropDown}
+            onClick={() => setToggleMenu(false)}
+          >
+            <Bars3Icon className="h-6 stroke-gray-500" />
+            <UserCircleIcon className="h-8" />
+          </div>
+        ) : (
+          <div
+            className="flex space-x-2 border-2 p-2 rounded-full items-center hover:shadow-md transition duration-150 cursor-pointer"
+            ref={menuDropDown}
+            onClick={() => setToggleMenu(true)}
+          >
+            <Bars3Icon className="h-6 stroke-gray-500" />
+            <UserCircleIcon className="h-8" />
+          </div>
+        )}
+
+        {/* Dropdown Menu */}
+        {toggleMenu && (
+          <div className="bg-white rounded-xl w-[240px] absolute top-20 drop-shadow-2xl text-start right-12">
+            <ul className=" py-4 cursor-pointer">
+              <li className="font-semibold py-2 hover:bg-gray-100">
+                <span className="px-4 py-4">Sign up</span>
+              </li>
+              <li className="hover:bg-gray-100 py-2">
+                <span className="px-4">Log in</span>
+              </li>
+            </ul>
+            <hr className="px-0 w-full border-gray-300"></hr>
+            <ul className=" py-4 cursor-pointer">
+              <li className="py-2 hover:bg-gray-100">
+                <span className="px-4 py-4">Airbnb your home</span>
+              </li>
+              <li className="hover:bg-gray-100 py-2">
+                <span className="px-4">Help</span>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
 
+      {/* Search Menu */}
       {searchInput && (
-        <div className="flex flex-col col-span-3 mx-auto ">
+        <div className="flex flex-col col-span-3 mx-auto" ref={searchDropDown}>
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}
@@ -98,7 +162,7 @@ function Header({ placeholder }) {
             onChange={handleSelect}
           />
 
-          <div className="flex items-center border-b mb-4">
+          <div className="flex  items-center border-b mb-4">
             <h2 className="2xl flex-grow font-semibold">Number of Guests</h2>
 
             <UsersIcon className="h-5" />

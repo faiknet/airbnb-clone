@@ -50,6 +50,7 @@ function Search({ searchResults }) {
                 <InfoCard
                   key={img}
                   img={img}
+                  alt="Location"
                   location={location}
                   title={title}
                   description={description}

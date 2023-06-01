@@ -27,6 +27,7 @@ export default function Home({ exploreData, cardsData }) {
               <SmallCard
                 key={img}
                 img={img}
+                alt="Small card display of location"
                 distance={distance}
                 location={location}
               />
@@ -39,13 +40,19 @@ export default function Home({ exploreData, cardsData }) {
 
           <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
             {cardsData?.record.map(({ img, title }) => (
-              <MediumCard key={img} img={img} title={title} />
+              <MediumCard
+                key={img}
+                img={img}
+                alt="Medium card display of location"
+                title={title}
+              />
             ))}
           </div>
         </section>
 
         <LargeCard
           img="/Wishlist.png"
+          alt="Wishlists banner"
           title="The Greatest Outdoors"
           description="Wishlists curated by Aribnb."
           buttonText="Get Inspired"
